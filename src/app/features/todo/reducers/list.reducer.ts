@@ -13,7 +13,7 @@ export interface TodoListState extends EntityState<TodoEntity> {
 export const adapter = createEntityAdapter<TodoEntity>();
 const initialState: TodoListState = adapter.getInitialState();
 
-export const reducer = createReducer(
+const myreducer = createReducer(
   initialState,
   on(actions.addTodoItem, (state, action) => adapter.addOne(action.entity, state)),
   on(actions.clearCompleted, (state, action) => adapter.removeMany(action.items.map(a => a.id), state)),
@@ -25,6 +25,7 @@ export const reducer = createReducer(
   on(actions.addTodoItemFailed, (state, action) => adapter.removeOne(action.id, state)),
   on(actions.deleteTodoFailed, (state, action) => adapter.addOne(action.entity, state))
 );
-// export function reducer(state: TodoListState = initialState, action): TodoListState {
-//   return state;
-// }
+
+export function reducer(state: TodoListState = initialState, action): TodoListState {
+  return myreducer(state, action);
+}

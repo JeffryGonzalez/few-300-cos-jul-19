@@ -8,7 +8,7 @@ export const initialState: CompletedState = {
   ids: []
 };
 
-export const reducer = createReducer(
+const myreducer = createReducer(
   initialState,
   on(actions.todoItemCompleted, (state, action) => {
     return {
@@ -19,3 +19,7 @@ export const reducer = createReducer(
   on(actions.todosLoadedSuccessfully, (state, action) => ({ ids: action.completedIds }))
 
 );
+
+export function reducer(state: CompletedState = initialState, action): CompletedState {
+  return myreducer(state, action);
+}

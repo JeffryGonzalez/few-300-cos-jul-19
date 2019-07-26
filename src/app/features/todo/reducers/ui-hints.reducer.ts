@@ -9,8 +9,12 @@ const initialState: UiHintsState = {
 };
 
 
-export const reducer = createReducer(
+const myreducer = createReducer(
   initialState,
   on(listActions.loadTodos, (state) => ({ listLoaded: false })),
   on(listActions.todosLoadedSuccessfully, (state) => ({ listLoaded: true }))
 );
+
+export function reducer(state: UiHintsState = initialState, action): UiHintsState {
+  return myreducer(state, action);
+}
