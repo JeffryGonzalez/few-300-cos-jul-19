@@ -11,6 +11,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { FilterEffects } from './effects/filter.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { AppEffects } from './effects/app.effects';
+import { FamilyEntryComponent } from './components/family-entry/family-entry.component';
+import { FamilyAssignmentsComponent } from './components/family-assignments/family-assignments.component';
+import { FamilyAssignmentsCardComponent } from './components/family-assignments-card/family-assignments-card.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,10 @@ const routes: Routes = [
         component: ListComponent
       },
       {
+        path: 'family-entry',
+        component: FamilyEntryComponent
+      },
+      {
         path: '**',
         redirectTo: 'list'
       }
@@ -34,7 +41,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [TodoComponent, EntryComponent, ListComponent, FilterBarComponent],
+  declarations: [
+    FamilyEntryComponent,
+    TodoComponent,
+    EntryComponent,
+    ListComponent,
+    FamilyAssignmentsComponent,
+    FilterBarComponent,
+    FamilyAssignmentsCardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

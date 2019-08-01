@@ -3,6 +3,7 @@ import * as fromList from './list.reducer';
 import * as fromCompleted from './completed.reducer';
 import * as fromFilter from './filter.reducer';
 import * as fromUiHints from './ui-hints.reducer';
+import * as fromFamily from './family.reducer';
 
 import * as models from '../models';
 import { createSelector, createFeatureSelector, ActionReducerMap } from '@ngrx/store';
@@ -12,13 +13,15 @@ export interface TodosState {
   completed: fromCompleted.CompletedState;
   filter: fromFilter.FilterState;
   ui: fromUiHints.UiHintsState;
+  family: fromFamily.FamilyState;
 }
 
 export const reducers: ActionReducerMap<TodosState> = {
   list: fromList.reducer,
   completed: fromCompleted.reducer,
   filter: fromFilter.reducer,
-  ui: fromUiHints.reducer
+  ui: fromUiHints.reducer,
+  family: fromFamily.reducer
 };
 
 
